@@ -1,12 +1,27 @@
-import React from 'react';
-import MainPages from './components/mainPage.js';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+// import logo from "../public/Netflix_2015_logo";
+import BottomList from "./component/Bottom";
+import logo from "./Netflix_2015_logo.svg";
+import List from "./component/List";
+import { fetchData } from "./redux/actionCreators";
+import { MY_LIST, RECOMMENDATION_LIST } from "./redux/actionConstants";
 
 const App = () => {
-    return (
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+  return (
+    <div>
       <div>
-        <MainPages />
+        <img className="logo" src={logo} alt="netflix logo" />
       </div>
-    );
-}
+      <List type={MY_LIST} />
+      <List type={RECOMMENDATION_LIST} />
+      <BottomList />
+    </div>
+  );
+};
 
 export default App;
