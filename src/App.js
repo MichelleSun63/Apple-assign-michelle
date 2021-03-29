@@ -1,10 +1,12 @@
-import "./styles.css";
+import React from 'react';
+import MainPages from './components/mainPage.js';
 
-import Display from "./components/Display";
-export default function App() {
-  return (
-    <div className="App">
-      <Display />
-    </div>
-  );
+const App = () => {
+    return (
+      <div>
+        <MainPages />
+      </div>
+    );
 }
+
+export default App;
